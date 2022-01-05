@@ -2,11 +2,12 @@ import { useState, useEffect } from "react";
 import { ethers } from "ethers";
 import abi from "../../utils/MediaShare.json";
 import { Contract } from "web3-eth-contract";
+import {MediaShareContract} from "../../types/MediaShareContract";
 
 declare let window: any;
 
 export function useContract() {
-  const [contract, setContract] = useState<Contract | null>(null);
+  const [contract, setContract] = useState<MediaShareContract | null>(null);
   const contractAddress = "0x2D9F95DBA5e3Ddd529F56CbE72836D51Fc8AB289";
   const contractABI = abi.abi;
 

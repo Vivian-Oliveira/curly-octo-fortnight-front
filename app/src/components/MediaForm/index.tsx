@@ -5,18 +5,24 @@ import TextField from '@mui/material/TextField'
 import Button from '@mui/material/Button'
 import useForm from '../../hooks/useForm'
 import CircularProgress from '@mui/material/CircularProgress'
+import {useContractMethods} from "../../hooks/useContractMethods";
 
 const MediaForm = () => {
     const [form, onChange, clear] = useForm({ media: "" })
     const [isLoading, setIsLoading] = useState(false)
+    const { sendMedia } = useContractMethods()
 
-    const onSubmitForm = (event: FormEvent) => {
-        setIsLoading(true);
-        setTimeout(() => {
-            setIsLoading(false);
-        }, 3000)
+    const onSubmitForm = async (event: FormEvent) => {
         event.preventDefault()
-        console.log(form);
+        setIsLoading(true);
+        try {
+            await sendMedia(form.media);
+            clear();
+        } catch (e){
+            console.log(e);
+        } finally {
+            setIsLoading(false);
+        }
     }
 
     return (
