@@ -1,6 +1,7 @@
 import CardActionArea from "@mui/material/CardActionArea";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
+import { getUrl } from "../../lib/UrlConvert";
 import { MediaCardContainer, MediaCardContent } from "./styles";
 
 export type Props = {
@@ -10,6 +11,8 @@ export type Props = {
 };
 
 const MediaCard = (props: Props) => {
+  const { src, title, onClick } = props;
+  const url = getUrl(src);
   return (
     <MediaCardContainer onClick={props.onClick}>
       <CardActionArea>
@@ -17,8 +20,8 @@ const MediaCard = (props: Props) => {
           component={"iframe"}
           width="560px" 
           height="315px"
-          title={props.title}
-          src={props.src}
+          title={title}
+          src={url}
         />
 
         <MediaCardContent>
