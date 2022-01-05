@@ -2,6 +2,7 @@ import MediaCard from "../../components/MediaCard";
 import { Container } from "./styles";
 import { useWallet } from "../../hooks/useWallet/index";
 import { useEffect } from "react";
+import { Button } from "@mui/material";
 
 function MainPage() {
   const { account, connectWallet, checkIfWalletIsConnected } = useWallet();
@@ -13,9 +14,13 @@ function MainPage() {
   return (
     <Container>
       {!account && (
-        <button className="waveButton" onClick={connectWallet}>
+        <Button
+          variant="contained"
+          sx={{ backgroundColor: "#ED254E" }}
+          onClick={connectWallet}
+        >
           Connect Wallet
-        </button>
+        </Button>
       )}
 
       <MediaCard
