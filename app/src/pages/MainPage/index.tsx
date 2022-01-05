@@ -3,6 +3,7 @@ import { Container } from "./styles";
 import { useWallet } from "../../hooks/useWallet/index";
 import { useEffect } from "react";
 import { Button } from "@mui/material";
+import MediaForm from "../../components/MediaForm";
 
 function MainPage() {
   const { account, connectWallet, checkIfWalletIsConnected } = useWallet();
@@ -22,6 +23,8 @@ function MainPage() {
           Connect Wallet
         </Button>
       )}
+
+      <MediaForm />
 
       <MediaCard
         title="teste"
