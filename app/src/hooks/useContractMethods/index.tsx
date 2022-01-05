@@ -9,7 +9,7 @@ export function useContractMethods (){
             const { ethereum } = window;
 
             if (ethereum) {
-                contract?.sendMedia(media)
+                await contract?.sendMedia(media)
             } else {
                 console.log("Ethereum object doesn't exist!");
             }

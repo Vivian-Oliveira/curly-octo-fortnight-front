@@ -1,5 +1,5 @@
 export interface MediaShareContract {
     sendMedia: (media: string) => void;
-    getAllMedias: () => void;
+    getAllMedias: () => any;
     getTotalMedias: () => number;
 }
