@@ -57,8 +57,8 @@ const MediaForm = () => {
             sx={{
               backgroundColor: starWarsYellow,
               color: "#000",
-              margin: "0",
-              height: "7vh",
+              margin: "10px  0 0 0",
+              height: "56px",
               width: "10vh",
             }}
           >
