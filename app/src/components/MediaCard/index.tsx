@@ -7,20 +7,28 @@ import { getUrl } from "../../lib/UrlConvert";
 import { MediaCardContainer, MediaCardContent } from "./styles";
 import { useState } from "react";
 import { greyColor, neutralColor } from "../../styles/colors";
+import { useContractMethods } from "../../hooks/useContractMethods/index";
 
 export type Props = {
   src: any;
   title: string;
   onClick: () => void;
+  mediaId: number;
 };
 
 const MediaCard = (props: Props) => {
-  const { src, title, onClick } = props;
+  const { src, title, onClick, mediaId } = props;
   const [favorited, setFavorited] = useState(false);
   const url = getUrl(src);
+  const { thankMedia } = useContractMethods();
 
   function getColor() {
     return favorited ? neutralColor : greyColor;
+  }
+
+  async function handleFavoriteIconClick() {
+    setFavorited(!favorited);
+    await thankMedia(mediaId);
   }
 
   return (
@@ -42,7 +50,7 @@ const MediaCard = (props: Props) => {
           <IconButton aria-label="add to favorites">
             <FavoriteIcon
               sx={{ color: getColor() }}
-              onClick={() => setFavorited(!favorited)}
+              onClick={handleFavoriteIconClick}
             />
           </IconButton>
         </CardActions>
