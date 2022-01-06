@@ -1,11 +1,11 @@
 import MediaCard from "../../components/MediaCard";
-import { Container } from "./styles";
+import { Container, MediaGrid } from "./styles";
 import { useWallet } from "../../hooks/useWallet/index";
-import {useEffect} from "react";
+import { useEffect } from "react";
 import { Button } from "@mui/material";
 import MediaForm from "../../components/MediaForm";
-import {useMedias} from "../../hooks/useMedias";
-import {Media} from "../../types/Media";
+import { useMedias } from "../../hooks/useMedias";
+import { Media } from "../../types/Media";
 
 function MainPage() {
   const { account, connectWallet, checkIfWalletIsConnected } = useWallet();
@@ -15,9 +15,9 @@ function MainPage() {
     checkIfWalletIsConnected();
   }, []);
 
-    useEffect(() => {
-        console.log(medias);
-    }, [medias])
+  useEffect(() => {
+    console.log(medias);
+  }, [medias]);
 
   return (
     <Container>
@@ -33,14 +33,15 @@ function MainPage() {
 
       <MediaForm />
 
-        {medias?.map((media: Media) =>
-          (
-            <MediaCard
-                title={media.sender}
-                src={media.media}
-                onClick={() => {}}
-            />
+      <MediaGrid>
+        {medias?.map((media: Media) => (
+          <MediaCard
+            title={media.sender}
+            src={media.media}
+            onClick={() => {}}
+          />
         ))}
+      </MediaGrid>
     </Container>
   );
 }
