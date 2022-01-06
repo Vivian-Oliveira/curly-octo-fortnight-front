@@ -4,9 +4,9 @@ import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import { getUrl } from "../../lib/UrlConvert";
-import { MediaCardContainer, MediaCardContent } from "./styles";
+import { MediaCardContainer, MediaCardContent, FavoriteText } from "./styles";
 import { useState } from "react";
-import { greyColor, neutralColor } from "../../styles/colors";
+import { starWarsYellowLight, neutralColor } from "../../styles/colors";
 import { useContractMethods } from "../../hooks/useContractMethods/index";
 
 export type Props = {
@@ -23,7 +23,7 @@ const MediaCard = (props: Props) => {
   const { thankMedia } = useContractMethods();
 
   function getColor() {
-    return favorited ? neutralColor : greyColor;
+    return favorited ? neutralColor : starWarsYellowLight;
   }
 
   async function handleFavoriteIconClick() {
@@ -32,7 +32,7 @@ const MediaCard = (props: Props) => {
   }
 
   return (
-    <MediaCardContainer onClick={onClick} elevation={0} >
+    <MediaCardContainer onClick={onClick} elevation={0} sx={{borderRadius: 0}} >
       <CardActionArea sx={{ maxWidth: 560 }}>
         <CardMedia
           component={"iframe"}
@@ -41,16 +41,17 @@ const MediaCard = (props: Props) => {
           src={url}
         />
 
-        <MediaCardContent>
+        <MediaCardContent sx={{backgroundColor: "#000"}}>
           <Typography align={"center"}>{props.title.toUpperCase()}</Typography>
         </MediaCardContent>
 
-        <CardActions disableSpacing>
+        <CardActions disableSpacing sx={{backgroundColor: "#303030"}}>
           <IconButton aria-label="add to favorites">
             <FavoriteIcon
               sx={{ color: getColor() }}
               onClick={handleFavoriteIconClick}
             />
+            <FavoriteText color={getColor()}>0.01m</FavoriteText>
           </IconButton>
         </CardActions>
       </CardActionArea>

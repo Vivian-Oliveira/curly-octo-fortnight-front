@@ -15,7 +15,7 @@ export const InputsContainer = styled.div`
   width: 80vw;
   max-width: 450px;
   align-items: center;
-  // margin-bottom: 20px;
+  margin-right: 10px;
 `;
 
 export const MediaFormContainer = styled.div`
