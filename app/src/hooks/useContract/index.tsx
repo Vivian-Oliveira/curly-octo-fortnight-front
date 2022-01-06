@@ -8,7 +8,7 @@ declare let window: any;
 
 export function useContract() {
   const [contract, setContract] = useState<MediaShareContract | null>(null);
-  const contractAddress = "0x2D9F95DBA5e3Ddd529F56CbE72836D51Fc8AB289";
+  const contractAddress = "0xABDe753B27Ba56F0608480e1cE0Ce69d78968263";
   const contractABI = abi.abi;
 
   async function fetchContract() {

@@ -15,6 +15,7 @@ export function useMedias (){
                 const contractMedias = await contract?.getAllMedias()
                 const mediasCleaned = contractMedias.map((media: Media )=> {
                     return {
+                        id: Number(media.id),
                         sender: media.sender,
                         timestamp: new Date(media.timestamp * 1000),
                         media: media.media,
