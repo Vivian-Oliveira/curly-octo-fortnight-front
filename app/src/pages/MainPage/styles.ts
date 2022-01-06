@@ -27,3 +27,7 @@ export const Header = styled.div`
   align-items: center;
   justify-content: center;
 `;
+
+export const Title = styled.h1`
+  font-size: 40px;
+`;
