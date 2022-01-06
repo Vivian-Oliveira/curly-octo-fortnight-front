@@ -13,6 +13,7 @@ export const Container = styled.div`
 export const MediaGrid = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  row-gap: 10px;
+  row-gap: 40px;
   column-gap: 40px;
-`
+  margin: 14px 14px 24px 24px;
+`;

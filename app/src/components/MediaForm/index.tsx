@@ -1,6 +1,10 @@
-import React, { FormEvent, useState } from "react";
-import { InputsContainer, MediaFormContainer } from "./styles";
-import TextField from "@mui/material/TextField";
+import { FormEvent, useState } from "react";
+import {
+  InputsContainer,
+  MediaFormContainer,
+  StyledTextField,
+  ButtonContainer,
+} from "./styles";
 import Button from "@mui/material/Button";
 import useForm from "../../hooks/useForm";
 import CircularProgress from "@mui/material/CircularProgress";
@@ -28,34 +32,43 @@ const MediaForm = () => {
   return (
     <MediaFormContainer>
       <form onSubmit={onSubmitForm}>
-        <InputsContainer>
-          <TextField
-            name={"media"}
-            value={form.media}
-            onChange={onChange}
-            label={"Media Link"}
-            variant={"outlined"}
+        <ButtonContainer>
+          <InputsContainer>
+            <StyledTextField
+              name={"media"}
+              value={form.media}
+              onChange={onChange}
+              label={"Media Link"}
+              variant={"outlined"}
+              fullWidth
+              margin={"normal"}
+              required
+              type={"text"}
+              InputLabelProps={{
+                style: { color: starWarsYellow },
+              }}
+            />
+          </InputsContainer>
+
+          <Button
+            type={"submit"}
             fullWidth
-            margin={"normal"}
-            required
-            type={"text"}
-            InputLabelProps={{
-              style: { color: starWarsYellow },
+            variant={"outlined"}
+            sx={{
+              backgroundColor: starWarsYellow,
+              color: "#000",
+              margin: "0",
+              height: "7vh",
+              width: "10vh",
             }}
-          />
-        </InputsContainer>
-        <Button
-          type={"submit"}
-          fullWidth
-          variant={"contained"}
-          sx={{ backgroundColor: starWarsYellow }}
-        >
-          {isLoading ? (
-            <CircularProgress color={"inherit"} size={24} />
-          ) : (
-            <>Submit</>
-          )}
-        </Button>
+          >
+            {isLoading ? (
+              <CircularProgress color={"inherit"} size={24} />
+            ) : (
+              <>Submit</>
+            )}
+          </Button>
+        </ButtonContainer>
       </form>
     </MediaFormContainer>
   );
