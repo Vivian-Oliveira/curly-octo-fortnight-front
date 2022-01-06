@@ -1,5 +1,5 @@
 import MediaCard from "../../components/MediaCard";
-import { Container } from "./styles";
+import { Container, MediaGrid } from "./styles";
 import { useWallet } from "../../hooks/useWallet/index";
 import { useEffect } from "react";
 import { Button } from "@mui/material";
@@ -33,14 +33,16 @@ function MainPage() {
 
       <MediaForm />
 
-      {medias?.map((media: Media) => (
-        <MediaCard
-          title={media.sender}
-          src={media.media}
-          onClick={() => {}}
-          mediaId={media.id}
-        />
-      ))}
+      <MediaGrid>
+        {medias?.map((media: Media) => (
+          <MediaCard
+            title={media.sender}
+            src={media.media}
+            mediaId={media.id}
+            onClick={() => {}}
+          />
+        ))}
+      </MediaGrid>
     </Container>
   );
 }

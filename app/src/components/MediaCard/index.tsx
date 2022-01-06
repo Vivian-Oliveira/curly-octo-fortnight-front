@@ -32,11 +32,10 @@ const MediaCard = (props: Props) => {
   }
 
   return (
-    <MediaCardContainer onClick={onClick}>
-      <CardActionArea>
+    <MediaCardContainer onClick={onClick} elevation={0} >
+      <CardActionArea sx={{ maxWidth: 560 }}>
         <CardMedia
           component={"iframe"}
-          width="560px"
           height="315px"
           title={title}
           src={url}
