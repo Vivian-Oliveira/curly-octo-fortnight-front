@@ -38,6 +38,7 @@ function MainPage() {
           <MediaCard
             title={media.sender}
             src={media.media}
+            mediaId={media.id}
             onClick={() => {}}
           />
         ))}
