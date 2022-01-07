@@ -4,46 +4,54 @@ import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import { getUrl } from "../../lib/UrlConvert";
-import { MediaCardContainer, MediaCardContent } from "./styles";
+import { MediaCardContainer, MediaCardContent, FavoriteText } from "./styles";
 import { useState } from "react";
-import { greyColor, neutralColor } from "../../styles/colors";
+import { starWarsYellowLight, neutralColor } from "../../styles/colors";
+import { useContractMethods } from "../../hooks/useContractMethods/index";
 
 export type Props = {
   src: any;
   title: string;
   onClick: () => void;
+  mediaId: number;
 };
 
 const MediaCard = (props: Props) => {
-  const { src, title, onClick } = props;
+  const { src, title, onClick, mediaId } = props;
   const [favorited, setFavorited] = useState(false);
   const url = getUrl(src);
+  const { thankMedia } = useContractMethods();
 
   function getColor() {
-    return favorited ? neutralColor : greyColor;
+    return favorited ? neutralColor : starWarsYellowLight;
+  }
+
+  async function handleFavoriteIconClick() {
+    setFavorited(!favorited);
+    await thankMedia(mediaId);
   }
 
   return (
-    <MediaCardContainer onClick={onClick}>
-      <CardActionArea>
+    <MediaCardContainer onClick={onClick} elevation={0} sx={{borderRadius: 0}} >
+      <CardActionArea sx={{ maxWidth: 560 }}>
         <CardMedia
           component={"iframe"}
-          width="560px"
           height="315px"
           title={title}
           src={url}
         />
 
-        <MediaCardContent>
+        <MediaCardContent sx={{backgroundColor: "#000"}}>
           <Typography align={"center"}>{props.title.toUpperCase()}</Typography>
         </MediaCardContent>
 
-        <CardActions disableSpacing>
+        <CardActions disableSpacing sx={{backgroundColor: "#303030"}}>
           <IconButton aria-label="add to favorites">
             <FavoriteIcon
               sx={{ color: getColor() }}
-              onClick={() => setFavorited(!favorited)}
+              onClick={handleFavoriteIconClick}
             />
+            <FavoriteText color={getColor()}>0.01 matic</FavoriteText>
           </IconButton>
         </CardActions>
       </CardActionArea>
