@@ -12,7 +12,7 @@ import animationData from '../../assets/18720-baby-yoda.json';
 
 function MainPage() {
   const { account, connectWallet, checkIfWalletIsConnected } = useWallet();
-  const { medias } = useMedias();
+  const { medias, getAllMedias } = useMedias();
     const defaultOptions = {
         loop: true,
         autoplay: true,
@@ -27,8 +27,8 @@ function MainPage() {
   }, []);
 
   useEffect(() => {
-    console.log(medias);
-  }, [medias]);
+      getAllMedias()
+  }, [account]);
 
   return (
     <Container>

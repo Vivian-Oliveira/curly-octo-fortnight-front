@@ -21,14 +21,22 @@ const MediaCard = (props: Props) => {
   const [favorited, setFavorited] = useState(false);
   const url = getUrl(src);
   const { thankMedia } = useContractMethods();
+  const [loading, setLoading] = useState(false);
 
   function getColor() {
     return favorited ? neutralColor : starWarsYellowLight;
   }
 
   async function handleFavoriteIconClick() {
+    setLoading(true);
     setFavorited(!favorited);
-    await thankMedia(mediaId);
+    try{
+      await thankMedia(mediaId);
+    } catch (e){
+      console.log(e)
+    } finally {
+      setLoading(false);
+    }
   }
 
   return (
@@ -51,7 +59,7 @@ const MediaCard = (props: Props) => {
               sx={{ color: getColor() }}
               onClick={handleFavoriteIconClick}
             />
-            <FavoriteText color={getColor()}>0.01 matic</FavoriteText>
+            <FavoriteText color={getColor()}>{loading ? "thanking...": "0.01 matic"}</FavoriteText>
           </IconButton>
         </CardActions>
       </CardActionArea>

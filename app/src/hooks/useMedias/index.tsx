@@ -1,10 +1,12 @@
 import {useContract} from "../useContract";
 import {useCallback, useEffect, useState} from "react";
 import {Media} from "../../types/Media";
+import { useWallet } from "../useWallet";
 declare let window: any;
 
 export function useMedias (){
     const { contract } = useContract();
+    const { account } = useWallet();
     const [medias, setMedias] = useState([]);
 
     const getAllMedias = useCallback(async () => {
@@ -32,7 +34,7 @@ export function useMedias (){
 
     useEffect(() => {
         getAllMedias();
-    }, [contract])
+    }, [contract, getAllMedias])
 
     return {
         medias,
