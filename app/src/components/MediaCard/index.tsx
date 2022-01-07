@@ -51,7 +51,7 @@ const MediaCard = (props: Props) => {
               sx={{ color: getColor() }}
               onClick={handleFavoriteIconClick}
             />
-            <FavoriteText color={getColor()}>0.01m</FavoriteText>
+            <FavoriteText color={getColor()}>0.01 matic</FavoriteText>
           </IconButton>
         </CardActions>
       </CardActionArea>

@@ -36,7 +36,7 @@ function MainPage() {
             <Title>Matic Menace</Title>
         </Header>
         {!account && <div>
-            <iframe width="1800" height="840" src="https://www.youtube.com/embed/PdINAnuLjSI?start=5&autoplay=1&showinfo=0&controls=0" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+            <iframe width="1800" height="840" src="https://www.youtube.com/embed/PdINAnuLjSI?start=5&autoplay=1&showinfo=0&controls=0&loop=1" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
         </div>}
       {!account && (
         <Button
