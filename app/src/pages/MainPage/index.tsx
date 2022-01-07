@@ -13,7 +13,7 @@ const audio = require("../../assets/audio/starWars.mp3");
 function MainPage() {
   const { account, connectWallet, checkIfWalletIsConnected } = useWallet();
   const { medias, getAllMedias } = useMedias();
-  const { toggle } = useAudio(audio);
+  const { toggle, turnOff } = useAudio(audio);
   const defaultOptions = {
     loop: true,
     autoplay: true,
@@ -30,12 +30,13 @@ function MainPage() {
 
   useEffect(() => {
     getAllMedias();
+    if(account) turnOff();
   }, [account]);
 
   return (
     <Container>
       <Header>
-        <Title>Matic Menace</Title>
+        <Title>The Rise of the Devs</Title>
       </Header>
       {!account && (
         <div>

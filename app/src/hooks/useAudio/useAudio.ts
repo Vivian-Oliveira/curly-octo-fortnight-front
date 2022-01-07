@@ -5,13 +5,14 @@ function useAudio(url: string) {
   const [playing, setPlaying] = useState(false);
 
   const toggle = () => setPlaying(!playing);
+  const turnOff = () => setPlaying(false);
 
   useEffect(() => {
     playing ? audio.play() : audio.pause();
     console.log(playing);
   }, [playing]);
 
-  return { playing, toggle };
+  return { playing, toggle, turnOff };
 }
 
 export default useAudio;
