@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { ethers } from "ethers";
 import abi from "../../utils/MediaShare.json";
 import { Contract } from "web3-eth-contract";
-import {MediaShareContract} from "../../types/MediaShareContract";
+import { MediaShareContract } from "../../types/MediaShareContract";
 
 declare let window: any;
 
