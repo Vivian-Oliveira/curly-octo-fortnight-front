@@ -1,5 +1,5 @@
 import MediaCard from "../../components/MediaCard";
-import { Container, MediaGrid, Header, Title } from "./styles";
+import { Container, MediaGrid, Header, Title, ContentContainer } from "./styles";
 import { useWallet } from "../../hooks/useWallet/index";
 import { useEffect } from "react";
 import { Button } from "@mui/material";
@@ -35,63 +35,68 @@ function MainPage() {
 
   return (
     <Container>
-      <Header>
-        <Title>The Rise of the Devs</Title>
-      </Header>
-      {!account && (
-        <div>
-          <iframe
-            width="1800"
-            height="840"
-            src="https://www.youtube.com/embed/PdINAnuLjSI?start=5&autoplay=1&showinfo=0&controls=0&loop=1"
-            title="YouTube video player"
-            frameBorder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-          ></iframe>
-        </div>
-      )}
-      {!account && (
-        <Button
-          variant="contained"
-          sx={{
-            color: "#ffd54e",
-            letterSpacing: "3px",
-            padding: "10px 30px 10px",
-            outline: "0",
-            border: "4px solid #ffd54e",
-            borderRadius: "15px",
-            background: "#000",
-            textShadow: "none",
-            fontSize: "32px",
-            transition: "box-shadow .3s ease-out,text-shadow .3s ease-out",
-            position: "absolute",
-            bottom: 25,
-            fontWeight: "bold",
-            zIndex: 2,
-          }}
-          onClick={connectWallet}
-        >
-          Connect Wallet
-        </Button>
-      )}
+      <div className="stars"></div>
+      <div className="twinkling"></div>
+      <ContentContainer>
+        <Header>
+          <Title>The Rise of the Devs</Title>
+        </Header>
+        {!account && (
+            <div>
+              <iframe
+                  width="1800"
+                  height="940"
+                  src="https://www.youtube.com/embed/PdINAnuLjSI?start=5&autoplay=1&showinfo=0&controls=0&loop=1"
+                  title="YouTube video player"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+              ></iframe>
+            </div>
+        )}
+        {!account && (
+            <Button
+                variant="contained"
+                sx={{
+                  color: "#ffd54e",
+                  letterSpacing: "3px",
+                  padding: "10px 50px 10px",
+                  outline: "0",
+                  border: "4px solid #ffd54e",
+                  borderRadius: "15px",
+                  background: "#000",
+                  textShadow: "none",
+                  fontSize: "32px",
+                  transition: "box-shadow .3s ease-out,text-shadow .3s ease-out",
+                  position: "absolute",
+                  bottom: 25,
+                  fontWeight: "bold",
+                  zIndex: 2,
+                }}
+                onClick={connectWallet}
+            >
+              Connect Wallet
+            </Button>
+        )}
 
-      {account && (
-        <>
-          <MediaForm />
+        {account && (
+            <>
+              <MediaForm />
 
-          <MediaGrid>
-            {medias?.map((media: Media) => (
-              <MediaCard
-                title={`${media.sender}`}
-                src={media.media}
-                mediaId={media.id}
-                onClick={() => {}}
-              />
-            ))}
-          </MediaGrid>
-        </>
-      )}
+              <MediaGrid>
+                {medias?.map((media: Media) => (
+                    <MediaCard
+                        title={`${media.sender}`}
+                        src={media.media}
+                        mediaId={media.id}
+                        onClick={() => {}}
+                    />
+                ))}
+              </MediaGrid>
+            </>
+        )}
+      </ContentContainer>
+
     </Container>
   );
 }

@@ -8,6 +8,7 @@ function useAudio(url: string) {
   const turnOff = () => setPlaying(false);
 
   useEffect(() => {
+    audio.volume = 0.15
     playing ? audio.play() : audio.pause();
     console.log(playing);
   }, [playing]);
